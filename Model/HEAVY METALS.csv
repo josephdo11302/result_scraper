@@ -1,0 +1,7 @@
+TABLE J: HEAVY METALSAnalysis Date: 7/26/2023,Unnamed: 0,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5,Unnamed: 6,Unnamed: 7
+"This sample was analyzed by elemental analysis using Inductively Coupled Plasma Mass Spectrometry (ICP-MS) for the identification of heavymetal constituents.  External calibration curves for heavy metals were used for quantitation, with an additional internal reference standard.Resulting data was compared with a sample blank.",,,,,,,,
+Test ID,Analyte,Concentration1unit = ppb,LODunit = ppb,LOQunit = ppb,Limits - All Use 2Limits (ppb)Test,Limits - Ingestion Only 2Limits (ppb)Test,,
+117196,As,ND,25,50,200,PASS,1500.0,PASS
+117196,Cd,ND,25,50,200,PASS,500.0,PASS
+117196,Hg,ND,25,50,100,PASS,1500.0,PASS
+117196,Pb,ND,25,50,500,PASS,1000.0,PASS

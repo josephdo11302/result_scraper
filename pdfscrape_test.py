@@ -6,7 +6,7 @@ import pandas as pd
 class TestPDFScrape(unittest.TestCase):
 
     def test_extract_data(self):
-        file_path = '/Users/dom/Final_project/test_result1.pdf'  # Path to a sample PDF file for testing
+        file_path = '/Users/dom/Final_project/test_result2.pdf'  # Path to a sample PDF file for testing
         scraper = PDFScrape(file_path)
         data_frames = scraper.extract_data()
 
@@ -23,7 +23,7 @@ class TestPDFScrape(unittest.TestCase):
         self.assertTrue(all(isinstance(df, pd.DataFrame) for df in data_frames))  
 
     def test_csv_export(self):
-        file_path = '/Users/dom/Final_project/test_result1.pdf'  # Path to a sample PDF file for testing
+        file_path = '/Users/dom/Final_project/test_result2.pdf'  # Path to a sample PDF file for testing
         scraper = PDFScrape(file_path)
         data_frames = scraper.extract_data()
     
