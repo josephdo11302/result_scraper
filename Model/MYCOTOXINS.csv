@@ -1,5 +1,5 @@
-TABLE M: MYCOTOXINSAnalysis Date: 7/25/2023,Unnamed: 0,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5,Unnamed: 6
-This sample was analyzed for mycotoxins using an Immunoaffinity based assay (IA).  Data was compared to readings from standard referencematerials.,,,,,,,
+TABLE M: MYCOTOXINSAnalysis Date: 8/4/2023,Unnamed: 0,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5,Unnamed: 6
+This sample was analyzed using Liquid Chromatography (LC).  The collected data was compared to data collected for a reference standards at aknown concentration.,,,,,,,
 Test ID,AnalyteSymbol,Analyte,Resultunit = ppb,LODunit = ppb,LOQunit = ppb,Standard Limitsunit = ppb,Limit Test
-117196,Afla,Total Aflatoxin,< LOD,2,4,< 20,PASS
-117196,Ochra,Total Ochratoxin,< LOD,3,6,< 20,PASS
+117314,Afla,Total Aflatoxin,< LOD,2,4,< 20,PASS
+117314,Ochra,Total Ochratoxin,< LOD,3,6,< 20,PASS

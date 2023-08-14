@@ -1,5 +1,5 @@
-TABLE L: PATHOGENIC BACTERIAAnalysis Date: 7/26/2023,Unnamed: 0,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4
+TABLE L: PATHOGENIC BACTERIAAnalysis Date: 8/2/2023,Unnamed: 0,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4
 This sample was analyzed for pathogenic bacteria using an automated Enzyme Linked Fluorescent Assay (ELFA).  Quality control checks areperformed monthly by running both a positive and a negative control sample for each pathogen.,,,,,
 Test ID,AnalyteSymbol,Test Analysis,Result,Standard Limits,Limit Test
-117196,ECPT,E. coli (O157),Negative,Non Detected in 1g,PASS
-117196,SPT,Salmonella,Negative,Non Detected in 1g,PASS
+117314,ECPT,E. coli (O157),Negative,Non Detected in 1g,PASS
+117314,SPT,Salmonella,Negative,Non Detected in 1g,PASS

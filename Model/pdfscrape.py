@@ -51,7 +51,9 @@ class PDFScrape:
 
             # Save the DataFrame to the CSV file (excluding the first row)
             df.iloc[1:].to_csv(csv_file, index=False)
-            print(f"Saved {csv_file}")
+
+            #print that the file is saved
+            #print(f"Saved {csv_file}")
 
 
 
