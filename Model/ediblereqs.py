@@ -121,4 +121,34 @@ class Edibles(ProductRequirements):
         myco_df = pd.DataFrame(data, columns=columns)
 
         return myco_df
+    
+    def edible_profile(self, cannabanoid_df, heavy_metals_df, microbio_df, myco_df):
+        # Calculate TAC by summing numeric values in the LOD column
+        TAC_values = cannabanoid_df['LOD'].replace(['ND', '<LOQ'], '0').astype(float)
+        TAC = str(TAC_values.sum()) + " mg"
+        
+        # Extract THC value corresponding to D9-THC
+        THC_value = cannabanoid_df[cannabanoid_df["Analyte"] == "D9-THC"]["LOD"].values[0]
+        try:
+            THC = str(float(THC_value)) + " mg"
+        except ValueError:
+            THC = "Error"
+        
+        # Check results for heavy metals, microbials, and mycotoxins
+        heavy_metals_result = "PASS" if all(heavy_metals_df["Result"] == "PASS") else "FAIL"
+        microbials_result = "PASS" if all(microbio_df["Test"] == "PASS") else "FAIL"
+        mycotoxins_result = "PASS" if all(row['LOD'].strip() == '< LOD' for _, row in myco_df.iterrows()) else "FAIL"
+        
+        profile = {
+            "type": "edible",
+            "TAC": TAC,
+            "THC": THC,
+            "Heavy Metals": heavy_metals_result,
+            "Microbials": microbials_result,
+            "Mycotoxins": mycotoxins_result
+        }
+        
+        return profile
+
+
    

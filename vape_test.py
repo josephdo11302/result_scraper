@@ -30,5 +30,28 @@ class TestConcentrates(unittest.TestCase):
         myco_df = vapes.extract_mycotoxins(csv_file_path)
         print(f'\n{myco_df}')
 
+    def test_vape_profile(self):
+        vapes = Vapes()
+
+        # Extract data from each CSV file
+        cannabanoid_df = vapes.extract_cannabanoid_profile('/Users/dom/Final_project/Model/CANNABINOID PROFILE.csv')
+        heavy_metals_df = vapes.extract_heavy_metals('/Users/dom/Final_project/Model/HEAVY METALS.csv')
+        micro_df = vapes.extract_microbiological_contaminants('/Users/dom/Final_project/Model/MICROBIOLOGICAL CONTAMINANTS.csv')
+        myco_df = vapes.extract_mycotoxins('/Users/dom/Final_project/Model/MYCOTOXINS.csv')
+
+        # Get the vape profile
+        profile = vapes.concentrate_profile(cannabanoid_df, heavy_metals_df, micro_df, myco_df)
+
+        # Print the profile for debugging purposes
+        print(f'\n{profile}')
+
+        # Assert the expected results (modify as per your expected results)
+        self.assertEqual(profile["type"], "vape")
+        self.assertTrue(isinstance(profile["TAC"], float) or profile["TAC"] == "Error")
+        self.assertTrue(isinstance(profile["THC"], str) or profile["THC"] == "Error")
+        self.assertIn(profile["Heavy Metals"], ["PASS", "FAIL"])
+        self.assertIn(profile["Microbials"], ["PASS", "FAIL"])
+        self.assertIn(profile["Mycotoxins"], ["PASS", "FAIL"])
+
 if __name__ == '__main__':
     unittest.main()

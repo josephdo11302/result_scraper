@@ -121,4 +121,60 @@ class Vapes(ProductRequirements):
         myco_df = pd.DataFrame(data, columns=columns)
 
         return myco_df
+    
+    def concentrate_profile(self, cannabanoid_df, heavy_metals_df, micro_df, myco_df):
+        """
+        Generate a profile for vapes based on provided dataframes.
+
+        Parameters:
+        - cannabanoid_df (pd.DataFrame): DataFrame containing cannabanoid profile data.
+        - heavy_metals_df (pd.DataFrame): DataFrame containing heavy metals data.
+        - micro_df (pd.DataFrame): DataFrame containing microbiological contaminants data.
+        - myco_df (pd.DataFrame): DataFrame containing mycotoxins data.
+
+        Returns:
+        dict: A dictionary containing the profile for concentrates. The structure is:
+            {
+                "type": "vape",
+                "TAC": sum of all numbers under "concentration" in the cannabanoid profile,
+                "THC": THCA concentration value,
+                "Heavy Metals": "PASS" if all results are "PASS", otherwise "FAIL",
+                "Microbials": "PASS" if all results are "PASS", otherwise "FAIL",
+                "Mycotoxins": "<LOD" if all results are "< LOD", otherwise "FAIL"
+            }
+        """
+
+        profile = {"type": "vape"}
+
+        # 1. TAC
+        try:
+            profile["TAC"] = cannabanoid_df["Concentration"].replace('ND', '0').astype(float).sum()
+        except:
+            profile["TAC"] = "Error"
+
+        # 2. THCA
+        try:
+            profile["THC"] = cannabanoid_df.loc[cannabanoid_df["Analyte"] == "THCA", "Concentration"].values[0]
+        except:
+            profile["THC"] = "Error"
+
+        # 3. Heavy Metals
+        if all(heavy_metals_df["Result"] == "PASS"):
+            profile["Heavy Metals"] = "PASS"
+        else:
+            profile["Heavy Metals"] = "FAIL"
+
+        # 4. Microbials
+        if all(micro_df["Test"] == "PASS"):
+            profile["Microbials"] = "PASS"
+        else:
+            profile["Microbials"] = "FAIL"
+
+        # 5. Mycotoxins
+        if all(row['LOD'].strip() == '< LOD' for _, row in myco_df.iterrows()):
+            profile["Mycotoxins"] = "PASS"
+        else:
+            profile["Mycotoxins"] = "FAIL"
+
+        return profile
    
