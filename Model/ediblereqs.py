@@ -3,16 +3,30 @@ from Model.productrequirements import ProductRequirements
 
 class Edibles(ProductRequirements):
     """
-    The Edibles class represents the requirements for edible products. 
-    It inherits from the ProductRequirements class and provides methods 
+    The Edibles class represents the requirements for edible products.
+    It inherits from the ProductRequirements class and provides methods
     specific to edibles.
+
+    Attributes:
+        cannabanoid_df (pd.DataFrame): DataFrame containing cannabinoid profile data.
+        heavy_metals_df (pd.DataFrame): DataFrame containing heavy metals data.
+        microbio_df (pd.DataFrame): DataFrame containing microbiological contaminants data.
+        myco_df (pd.DataFrame): DataFrame containing mycotoxins data.
+
+    Methods:
+        edible_profile(): Generate a product profile for edible products.
     """
 
     def __init__(self, cannabanoid_path, heavy_metals_path, microbio_path, myco_path):
         """
-        The Edibles class represents the requirements for edible products. 
-        It inherits from the ProductRequirements class and provides methods 
-        specific to edibles.
+        Initialize the Edibles class with paths to CSV files containing data
+        related to cannabinoid profile, heavy metals, microbiological contaminants,
+        and mycotoxins.
+
+        :param cannabanoid_path: str - Path to the CSV containing cannabinoid profile data.
+        :param heavy_metals_path: str - Path to the CSV containing heavy metals data.
+        :param microbio_path: str - Path to the CSV containing microbiological contaminants data.
+        :param myco_path: str - Path to the CSV containing mycotoxins data.
         """
         super().__init__()
         self.cannabanoid_df = self.extract_cannabanoid_profile(cannabanoid_path)
@@ -22,11 +36,11 @@ class Edibles(ProductRequirements):
 
     def edible_profile(self):
         """
-        Generates a profile for the edible product based on the provided data.
+        Generate and return a product profile for edible products based on extracted data.
 
-        :return: A dictionary containing the edible product's profile, including TAC, THC, 
-                 and results for heavy metals, microbials, and mycotoxins.
+        :return: dict - A dictionary containing the product profile for edibles.
         """
+        
         # Calculate TAC by summing numeric values in the LOD column
         TAC_values = self.cannabanoid_df['LOD'].replace(['ND', '<LOQ'], '0').astype(float)
         TAC = str(TAC_values.sum()) + " mg"

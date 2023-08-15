@@ -1,7 +1,41 @@
+import csv
+import os
+
 class ResultsLibrary:
+    """
+    The ResultsLibrary class manages a collection of product profiles. It provides functionalities to load data from 
+    a CSV file, and manage product profiles in memory.
+    """
     def __init__(self):
-        # Initialize an empty dictionary to store the products
+        """
+        Initialize the ResultsLibrary with an empty dictionary of products and then load product profiles from the default CSV.
+        """
         self.products = {}
+        self.load_from_csv()
+
+    def load_from_csv(self, filename="AutoLabel.csv"):
+        """
+        Load product profiles from a given CSV file into the products dictionary. If the file doesn't exist, 
+        the method simply returns without any action.
+
+        :param filename: The name of the CSV file (default is "AutoLabel.csv").
+        """
+        if not os.path.exists(filename):
+            return
+
+        with open(filename, 'r') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                product_id = row['Product ID']
+                profile = {
+                    'type': row['Type'],
+                    'TAC': row['TAC'],
+                    'THC': row['THC'],
+                    'Heavy Metals': row['Heavy Metals'],
+                    'Microbials': row['Microbials'],
+                    'Mycotoxins': row['Mycotoxins']
+                }
+                self.products[product_id] = profile
 
     def add_product(self, product_id, profile):
         """
