@@ -1,7 +1,7 @@
-TABLE K: MICROBIOLOGICAL CONTAMINANTSAnalysis Date: 8/1/2023,Unnamed: 0,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5
+TABLE K: MICROBIOLOGICAL CONTAMINANTSAnalysis Date: 7/25/2023,Unnamed: 0,Unnamed: 1,Unnamed: 2,Unnamed: 3,Unnamed: 4,Unnamed: 5
 This sample was analyzed for microbiological contaminants using an automated Most Probable Number (MPN) methodology with culturedenrichments.,,,,,,
 Test ID,AnalyteSymbol,Test Analysis,Result,Unit,Standard Limitsunit = CFU/g,Limit Test
-117314,CC,Total Coliform Bacterial Count,<100,CFU/g,"1,000 CFU/g",PASS
-117314,YM,Total Yeast & Mold,<100,CFU/g,"10,000 CFU/g",PASS
-117314,EB,Total Bile Tolerant Gram Negative Count,<100,CFU/g,"1,000 CFU/g",PASS
-117314,AC,Total Aerobic Bacterial Count,<100,CFU/g,"100,000 CFU/g",PASS
+117196,YM,Total Yeast & Mold,<100,CFU/g,"1,000 CFU/g",PASS
+117196,CC,Total Coliform Bacterial Count,<100,CFU/g,100 CFU/g,PASS
+117196,EB,Total Bile Tolerant Gram Negative Count,<100,CFU/g,100 CFU/g,PASS
+117196,AC,Total Aerobic Bacterial Count,<100,CFU/g,"10,000 CFU/g",PASS
