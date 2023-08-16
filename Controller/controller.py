@@ -37,7 +37,8 @@ class Controller:
 
     def remove_product(self, product_id):
         """
-        Remove a product profile from the library using its ID.
+        Remove a product profile from the library using its ID. calls the remove_product from product library
+        this just acts as a bridge
 
         :param product_id: The unique identifier for the product.
         :return: True if the product was removed, False otherwise.

@@ -4,20 +4,19 @@ import csv
 
 class Vapes(ProductRequirements):
     """
-    The Vapes class represents the requirements for vape products. 
-    It inherits from the ProductRequirements class and provides methods 
-    specific to vapes.
+    Represents the requirements for vape products. 
+    Inherits from the ProductRequirements class and provides methods specific to vapes.
     """
 
-    def __init__(self, cannabanoid_path, heavy_metals_path, microbio_path, myco_path):
+    def __init__(self, cannabanoid_path: str, heavy_metals_path: str, microbio_path: str, myco_path: str) -> None:
         """
         Initializes the Vapes class by extracting data from provided CSV paths.
 
-        Parameters:
-        - cannabanoid_path (str): Path to the CSV file containing cannabanoid profile data.
-        - heavy_metals_path (str): Path to the CSV file containing heavy metals data.
-        - microbio_path (str): Path to the CSV file containing microbiological contaminants data.
-        - myco_path (str): Path to the CSV file containing mycotoxins data.
+        Args:
+            cannabanoid_path (str): Path to the CSV file containing cannabanoid profile data.
+            heavy_metals_path (str): Path to the CSV file containing heavy metals data.
+            microbio_path (str): Path to the CSV file containing microbiological contaminants data.
+            myco_path (str): Path to the CSV file containing mycotoxins data.
         """
         super().__init__()  # Call the constructor of the base class
         self.cannabanoid_df = self.extract_cannabanoid_profile(cannabanoid_path)
@@ -25,20 +24,20 @@ class Vapes(ProductRequirements):
         self.microbio_df = self.extract_microbiological_contaminants(microbio_path)
         self.myco_df = self.extract_mycotoxins(myco_path)
 
-    def vape_profile(self):
+    def vape_profile(self) -> dict:
         """
         Generate a profile for vapes based on the extracted data.
 
         Returns:
-        dict: A dictionary containing the profile for vapes. The structure is:
-            {
-                "type": "vape",
-                "TAC": sum of all numbers under "concentration" in the cannabanoid profile,
-                "THC": THCA concentration value,
-                "Heavy Metals": "PASS" if all results are "PASS", otherwise "FAIL",
-                "Microbials": "PASS" if all results are "PASS", otherwise "FAIL",
-                "Mycotoxins": "<LOD" if all results are "< LOD", otherwise "FAIL"
-            }
+            dict: A dictionary containing the profile for vapes. The structure is:
+                {
+                    "type": "vape",
+                    "TAC": sum of all numbers under "concentration" in the cannabanoid profile,
+                    "THC": THCA concentration value,
+                    "Heavy Metals": "PASS" if all results are "PASS", otherwise "FAIL",
+                    "Microbials": "PASS" if all results are "PASS", otherwise "FAIL",
+                    "Mycotoxins": "<LOD" if all results are "< LOD", otherwise "FAIL"
+                }
         """
         profile = {"type": "vape"}
 

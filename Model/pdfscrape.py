@@ -7,7 +7,12 @@ class PDFScrape:
     """A class to scrape testing data from a PDF file, and export to CSV
     """
     def __init__(self, file_path: str):
-        """Initialize the PDFScrape with the path to a PDF file."""
+        """
+        Initialize the PDFScrape instance with the path to a PDF file.
+
+        Args:
+            file_path (str): The path to the PDF file to be scraped.
+        """
         self.file_path = file_path
 
     def extract_data(self) -> list:
@@ -19,19 +24,14 @@ class PDFScrape:
         tables = tabula.read_pdf(self.file_path, pages=['3', '4'], lattice=True)
         return tables
 
-    # def csv_output(self, data_frames: list):
-    #     """Save the extracted data to CSV files."""
-    #     script_dir = os.path.dirname(os.path.abspath(__file__))  # Get the directory of this script
-
-    #     for idx, df in enumerate(data_frames):
-    #         csv_file = os.path.join(script_dir, f"table_{idx + 1}.csv")
-    #         df.to_csv(csv_file, index=False)
-    #         print(f"Saved {csv_file}")
-
-    
-
     def csv_output(self, data_frames: list):
-        """Save the extracted data to CSV files."""
+        """
+        Save the extracted data to CSV files. The CSV filenames are determined based on table names 
+        extracted from the PDF, or default to "table_n.csv" if a name cannot be determined.
+
+        Args:
+            data_frames (list): A list of pandas DataFrames containing the extracted tables.
+        """
         script_dir = os.path.dirname(os.path.abspath(__file__))  # Get the directory of this script
         os.makedirs(script_dir, exist_ok=True)  # Ensure the directory exists
 

@@ -2,20 +2,37 @@ import pandas as pd
 import csv
 
 class ProductRequirements:
+    """
+    A class to handle the extraction of various product requirements from CSV files.
+    """
     def __init__(self):
+        """
+        Initialize the ProductRequirements instance.
+        """
         pass
 
     def extract_info(self, csv_file_path):
-        # Read CSV and extract general information
+        """
+        Read the CSV file and return its content as a DataFrame.
+
+        Args:
+            csv_file_path (str): Path to the CSV file.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the CSV file content.
+        """
         df = pd.read_csv(csv_file_path)
         return df
     
     def extract_cannabanoid_profile(self, csv_file_path):
         """
-        Extracts the cannabinoid profile from the given CSV file.
+        Extract the cannabinoid profile from the given CSV file.
 
-        :param csv_file_path: Path to the CSV file containing the cannabinoid profile data.
-        :return: A DataFrame containing the extracted cannabinoid profile.
+        Args:
+            csv_file_path (str): Path to the CSV file containing the cannabinoid profile data.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the extracted cannabinoid profile.
         """
         # Open the file
         with open(csv_file_path, 'r') as file:
@@ -42,10 +59,13 @@ class ProductRequirements:
 
     def extract_heavy_metals(self, csv_file_path):
         """
-        Extracts the heavy metals data from the given CSV file.
+        Extract the heavy metals data from the given CSV file.
 
-        :param csv_file_path: Path to the CSV file containing the heavy metals data.
-        :return: A DataFrame containing the extracted heavy metals data.
+        Args:
+            csv_file_path (str): Path to the CSV file containing the heavy metals data.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the extracted heavy metals data.
         """
         # Open the file
         with open(csv_file_path, 'r') as file:
@@ -72,10 +92,13 @@ class ProductRequirements:
 
     def extract_microbiological_contaminants(self, csv_file_path):
         """
-        Extracts the microbiological contaminants data from the given CSV file.
+        Extract the microbiological contaminants data from the given CSV file.
 
-        :param csv_file_path: Path to the CSV file containing the microbiological contaminants data.
-        :return: A DataFrame containing the extracted microbiological contaminants data.
+        Args:
+            csv_file_path (str): Path to the CSV file containing the microbiological contaminants data.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the extracted microbiological contaminants data.
         """
         # Open the file using csv module
         with open(csv_file_path, 'r') as file:
@@ -102,10 +125,13 @@ class ProductRequirements:
 
     def extract_mycotoxins(self, csv_file_path):
         """
-        Extracts the mycotoxins data from the given CSV file.
+        Extract the mycotoxins data from the given CSV file.
 
-        :param csv_file_path: Path to the CSV file containing the mycotoxins data.
-        :return: A DataFrame containing the extracted mycotoxins data.
+        Args:
+            csv_file_path (str): Path to the CSV file containing the mycotoxins data.
+
+        Returns:
+            pd.DataFrame: DataFrame containing the extracted mycotoxins data.
         """
         # Open the file using csv module
         with open(csv_file_path, 'r') as file:

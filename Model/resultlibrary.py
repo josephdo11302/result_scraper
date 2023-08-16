@@ -3,22 +3,26 @@ import os
 
 class ResultsLibrary:
     """
-    The ResultsLibrary class manages a collection of product profiles. It provides functionalities to load data from 
-    a CSV file, and manage product profiles in memory.
+    Manages a collection of product profiles, providing functionalities to load, 
+    save, and manage product profiles in memory.
     """
     def __init__(self):
         """
-        Initialize the ResultsLibrary with an empty dictionary of products and then load product profiles from the default CSV.
+        Initialize the ResultsLibrary with an empty dictionary of products and 
+        load product profiles from the default CSV.
         """
         self.products = {}
         self.load_from_csv()
 
     def load_from_csv(self, filename="AutoLabel.csv"):
         """
-        Load product profiles from a given CSV file into the products dictionary. If the file doesn't exist, 
-        the method simply returns without any action.
+        Load product profiles from a CSV file into the products dictionary.
 
-        :param filename: The name of the CSV file (default is "AutoLabel.csv").
+        Args:
+            filename (str): The name of the CSV file. Defaults to "AutoLabel.csv".
+
+        Returns:
+            None
         """
         if not os.path.exists(filename):
             return
@@ -37,46 +41,90 @@ class ResultsLibrary:
                 }
                 self.products[product_id] = profile
 
-    def add_product(self, product_id, profile):
+    def add_product(self, product_id: str, profile: dict):
         """
-        Add a product profile to the library.
+        Add or overwrite a product profile in the library.
 
-        :param product_id: A unique identifier for the product.
-        :param profile: The profile of the product.
+        Args:
+            product_id (str): A unique identifier for the product.
+            profile (dict): The profile of the product.
+
+        Returns:
+            None
         """
         if product_id in self.products:
             print(f"Product with ID {product_id} already exists. Overwriting...")
         self.products[product_id] = profile
 
-    def get_product(self, product_id):
+    def get_product(self, product_id: str) -> dict:
         """
         Retrieve a product profile from the library.
 
-        :param product_id: The unique identifier for the product.
-        :return: The profile of the product.
+        Args:
+            product_id (str): The unique identifier for the product.
+
+        Returns:
+            dict: The profile of the product or None if not found.
         """
         return self.products.get(product_id, None)
 
-    def remove_product(self, product_id):
+    def remove_product(self, product_id: str):
         """
-        Remove a product profile from the library.
+        Remove a product profile from the library and update the CSV.
 
-        :param product_id: The unique identifier for the product.
+        Args:
+            product_id (str): The unique identifier for the product.
+
+        Returns:
+            None
         """
         if product_id in self.products:
             del self.products[product_id]
+            self.save_to_csv()  # Save the updated library to the CSV
         else:
             print(f"Product with ID {product_id} not found.")
 
-    def list_products(self):
+    def save_to_csv(self, filename="AutoLabel.csv"):
+        """
+        Save the current state of the library to a CSV file.
+
+        Args:
+            filename (str): The name of the CSV file. Defaults to "AutoLabel.csv".
+
+        Returns:
+            None
+        """
+        with open(filename, 'w', newline='') as csvfile:
+            fieldnames = ['Product ID', 'Type', 'TAC', 'THC', 'Heavy Metals', 'Microbials', 'Mycotoxins']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+            writer.writeheader()
+            for product_id, profile in self.products.items():
+                writer.writerow({
+                    'Product ID': product_id,
+                    'Type': profile['type'],
+                    'TAC': profile['TAC'],
+                    'THC': profile['THC'],
+                    'Heavy Metals': profile['Heavy Metals'],
+                    'Microbials': profile['Microbials'],
+                    'Mycotoxins': profile['Mycotoxins']
+                })
+
+    def list_products(self) -> list:
         """
         List all product IDs in the library.
+
+        Returns:
+            list: A list containing all product IDs.
         """
         return list(self.products.keys())
 
     def clear_library(self):
         """
         Clear all products from the library.
+
+        Returns:
+            None
         """
         self.products.clear()
 

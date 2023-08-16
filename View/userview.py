@@ -3,20 +3,21 @@ from Model.resultlibrary import ResultsLibrary
 
 class View:
     """
-    The View class provides an interface for the user to interact with the application.
-    It displays menus, accepts user input, and presents the results.
+    Provides an interface for the user to interact with the application.
+    Displays menus, accepts user input, and presents the results.
     """
-    def __init__(self, controller):
+    def __init__(self, controller) -> None:
         """
-        Initialize the View with a given controller.
+        Initializes the View with a given controller.
 
-        :param controller: The controller instance to handle the business logic.
+        Args:
+            controller: The controller instance to handle the business logic.
         """
         self.controller = controller
 
-    def display_menu(self):
+    def display_menu(self) -> None:
         """
-        Display the main menu options to the user.
+        Displays the main menu options to the user.
         """
         print("\nMenu:")
         print("1. Scrape a new PDF")
@@ -26,11 +27,12 @@ class View:
         print("5. Remove a product by ID")
         print("6. Exit")
 
-    def display_past_results(self, results):
+    def display_past_results(self, results: dict) -> None:
         """
-        Display the past results in a formatted manner.
+        Displays the past results in a formatted manner.
 
-        :param results: A dictionary containing product profiles.
+        Args:
+            results (dict): A dictionary containing product profiles.
         """
         print("\nResults:")
         header = "{:<12} | {:<12} | {:<10} | {:<10} | {:<15} | {:<10} | {:<10}"
@@ -49,11 +51,12 @@ class View:
             ))
         print("-" * 95)  # separator
 
-    def display_historical_report(self, report):
+    def display_historical_report(self, report: dict) -> None:
         """
-        Display the historical report in a formatted manner.
+        Displays the historical report in a formatted manner.
 
-        :param report: A dictionary containing the historical report data.
+        Args:
+            report (dict): A dictionary containing the historical report data.
         """
         print("\nHistorical Report:")
         print("-" * 40)  # separator
@@ -65,7 +68,7 @@ class View:
         print(f"Mycotoxins Pass Percentage: {report['Mycotoxins Pass Percentage']}%")
         print("-" * 40)  # separator
 
-    def run(self):
+    def run(self) -> None:
         """
         The main loop of the application. It keeps running until the user decides to exit.
         """
