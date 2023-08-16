@@ -6,15 +6,15 @@ import pandas as pd
 class TestPDFScrape(unittest.TestCase):
 
     def test_extract_data(self):
-        file_path = '/Users/dom/Final_project/concentrate_result.pdf'  # Path to a sample PDF file for testing
+        file_path = '/Users/dom/Final_project/Results/edible_result.pdf'  # Path to a sample PDF file for testing
         scraper = PDFScrape(file_path)
         data_frames = scraper.extract_data()
 
-        # # Print the data frames
-        # for idx, df in enumerate(data_frames):
-        #     print(f"Data Frame {idx + 1}:")
-        #     print(df)
-        #     print("=" * 40)
+        #Print the data frames
+        for idx, df in enumerate(data_frames):
+            print(f"Data Frame {idx + 1}:")
+            print(df)
+            print("=" * 40)
 
         # Check that the result is a list
         self.assertIsInstance(data_frames, list) 
@@ -23,9 +23,11 @@ class TestPDFScrape(unittest.TestCase):
         self.assertTrue(all(isinstance(df, pd.DataFrame) for df in data_frames))  
 
     def test_csv_export(self):
-        file_path = '/Users/dom/Final_project/concentrate_result.pdf'  # Path to a sample PDF file for testing
+        file_path = '/Users/dom/Final_project/Results/edible_result.pdf'  # Path to a sample PDF file for testing
         scraper = PDFScrape(file_path)
         data_frames = scraper.extract_data()
+
+        #print(data_frames)
     
         # Export the extracted data to CSV files
         scraper.csv_output(data_frames)

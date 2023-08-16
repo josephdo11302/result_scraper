@@ -122,7 +122,6 @@ class ProductRequirements:
 
         return micro_df
 
-
     def extract_mycotoxins(self, csv_file_path):
         """
         Extract the mycotoxins data from the given CSV file.

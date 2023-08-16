@@ -89,7 +89,6 @@ class Controller:
         self.export_to_csv()
         return profile
 
-
     def get_past_results(self, product_type=None, product_id=None):
         """
         Fetch past results based on product type or product ID.
@@ -105,7 +104,6 @@ class Controller:
             return {pid: profile for pid, profile in self.library.products.items() if profile['type'] == product_type}
         
         return self.library.products
-
 
     def generate_historical_report(self, product_type):
         """
